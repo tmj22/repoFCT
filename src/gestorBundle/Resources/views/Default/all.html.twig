@@ -1,0 +1,69 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+<h1>TODAS LAS EMPRESAS</h1>
+<table border="2" style="border:1px dotted red; width:300px">
+
+    <tr>
+
+      {% for evento in eventos %}
+
+          <td><b>{{ evento.nombre }}</b></td>
+
+      {% endfor %}
+
+    </tr>
+
+    <tr>
+
+      {% for evento in eventos %}
+
+          <td>{{ evento.direccion }}</td>
+
+      {% endfor %}
+
+    </tr>
+
+    <tr>
+
+      {% for evento in eventos %}
+
+          <td>{{ evento.cp }}</td>
+
+      {% endfor %}
+
+    </tr>
+
+    <tr>
+
+      {% for evento in eventos %}
+
+          <td>{{ evento.telefono1 }}</td>
+
+      {% endfor %}
+
+    </tr>
+
+    <tr>
+
+      {% for evento in eventos %}
+
+          <td>{{ evento.telefono2 }}</td>
+
+      {% endfor %}
+
+    </tr>
+
+    <tr>
+
+      {% for evento in eventos %}
+
+          <td>{{ evento.fechaCreacion }}</td>
+
+      {% endfor %}
+
+    </tr>
+
+  </table>
+
+{% endblock %}
