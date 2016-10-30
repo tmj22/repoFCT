@@ -1,8 +1,11 @@
 {% extends '::base.html.twig' %}
 {% block body %}
+{% block stylesheets %}
+        <link href="{{ asset('css/style.css') }}" type="text/css" rel="stylesheet" />
+    {% endblock %}
 
 <h1>TODAS LAS EMPRESAS</h1>
-<table border="2" style="border:1px dotted red; width:300px">
+<table border="2" style="border:10px; width:300px">
 
     <tr>
 

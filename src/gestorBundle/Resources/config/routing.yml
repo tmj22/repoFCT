@@ -4,4 +4,8 @@ gestor_homepage:
 
 all_empresas:
     path:     /empresas/all
-    defaults: { _controller: gestorBundle:Default:all }
+    defaults: { _controller: gestorBundle:empresas:all }
+
+nuevo_empresas:
+    path:     /empresas/nuevo
+    defaults: { _controller: gestorBundle:empresas:nuevo }
