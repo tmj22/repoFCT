@@ -1,0 +1,28 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+{% block stylesheets %}
+        <link href="{{ asset('css/styles.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('css/bootstrap-table.css') }}" type="text/css" rel="stylesheet" />
+    {% endblock %}
+
+<h1>TODOS LOS ALUMNOS</h1>
+<table border="2" style="border:20px; width:300px;">
+  <tr>
+      <td>Nombre</td>
+      <td>Apellido 1</td>
+      <td>Apellido 2</td>
+      <td>Ciclo</td>
+      <td>Empresa</td>
+     </tr>
+  {% for alumno in alumnos %}
+  <tr>
+      <td>{{ alumno.nombre }}</td>
+      <td>{{ alumno.apellido1 }}</td>
+      <td>{{ alumno.apellido2 }}</td>
+      <td>{{ alumno.ciclo }}</td>
+      <td>{{ alumno.empresa.nombre }}</td>
+  </tr>
+ {% endfor %}
+</table>
+
+{% endblock %}

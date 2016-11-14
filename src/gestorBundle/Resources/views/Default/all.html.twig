@@ -1,72 +1,30 @@
 {% extends '::base.html.twig' %}
 {% block body %}
 {% block stylesheets %}
-        <link href="{{ asset('css/style.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('css/styles.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('css/bootstrap-table.css') }}" type="text/css" rel="stylesheet" />
     {% endblock %}
 
 <h1>TODAS LAS EMPRESAS</h1>
-<table border="2" style="border:10px; width:300px">
-
-    <tr>
-
-      {% for evento in eventos %}
-
-          <td><b>{{ evento.nombre }}</b></td>
-
-      {% endfor %}
-
-    </tr>.
-
-    <tr>
-
-      {% for evento in eventos %}
-
-          <td>{{ evento.direccion }}</td>
-
-      {% endfor %}
-
-    </tr>
-
-    <tr>
-
-      {% for evento in eventos %}
-
-          <td>{{ evento.cp }}</td>
-
-      {% endfor %}
-
-    </tr>
-
-    <tr>
-
-      {% for evento in eventos %}
-
-          <td>{{ evento.telefono1 }}</td>
-
-      {% endfor %}
-
-    </tr>
-
-    <tr>
-
-      {% for evento in eventos %}
-
-          <td>{{ evento.telefono2 }}</td>
-
-      {% endfor %}
-
-    </tr>
-
-    <tr>
-
-      {% for evento in eventos %}
-
-          <td>{{ evento.fechaCreacion }}</td>
-
-      {% endfor %}
-
-    </tr>
-
-  </table>
+<table border="2" style="border:20px; width:300px;">
+  <tr>
+      <td>Nombre</td>
+      <td>Dirección</td>
+      <td>Código Postal</td>
+      <td>Teléfono 1</td>
+      <td>Teléfono 2</td>
+      <td>Fecha de creación</td>
+     </tr>
+  {% for empresa in empresas %}
+  <tr>
+      <td>{{ empresa.nombre }}</td>
+      <td>{{ empresa.direccion }}</td>
+      <td>{{ empresa.cp }}</td>
+      <td>{{ empresa.telefono1 }}</td>
+      <td>{{ empresa.telefono2 }}</td>
+      <td>{{ empresa.fechaCreacion }}</td>
+  </tr>
+ {% endfor %}
+</table>
 
 {% endblock %}

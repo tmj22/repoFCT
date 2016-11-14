@@ -63,6 +63,10 @@ class empresas
      */
     private $fechaCreacion;
 
+    /**
+     * @ORM\oneToMany(targetEntity="alumnos", mappedBy="empresa")
+     */
+    private $alumnos;
 
     /**
      * Get id

@@ -13,8 +13,8 @@ class empresasController extends Controller
       public function allAction()
       {
           $repository = $this->getDoctrine()->getRepository('gestorBundle:empresas');
-          $events = $repository->findAll();
-          return $this->render('gestorBundle:Default:all.html.twig',array('eventos' => $events));
+          $empresas = $repository->findAll();
+          return $this->render('gestorBundle:Default:all.html.twig',array('empresas' => $empresas));
       }
 
       public function nuevoAction(Request $request)
