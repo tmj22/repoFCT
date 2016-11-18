@@ -13,3 +13,8 @@ nuevo_empresas:
 all_alumnos:
     path:     /alumnos/all
     defaults: { _controller: gestorBundle:alumnos:all }
+
+api:
+    path:     /API
+    defaults: { _controller: gestorBundle:API:empresas }
+    methods: [GET]
