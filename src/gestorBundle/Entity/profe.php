@@ -42,6 +42,11 @@ class profe
      */
     private $departamento;
 
+    /**
+     * @ORM\oneToMany(targetEntity="alumnos", mappedBy="profe")
+     */
+    private $alumnos;
+
 
     /**
      * Get id
@@ -125,4 +130,3 @@ class profe
         return $this->departamento;
     }
 }
-

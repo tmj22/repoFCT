@@ -13,6 +13,7 @@
       <td>Apellido 2</td>
       <td>Ciclo</td>
       <td>Empresa</td>
+      <td>Profesor</td>
      </tr>
   {% for alumno in alumnos %}
   <tr>
@@ -21,6 +22,7 @@
       <td>{{ alumno.apellido2 }}</td>
       <td>{{ alumno.ciclo }}</td>
       <td>{{ alumno.empresa.nombre }}</td>
+      <td>{{ alumno.profe.nombre }}</td>
   </tr>
  {% endfor %}
 </table>

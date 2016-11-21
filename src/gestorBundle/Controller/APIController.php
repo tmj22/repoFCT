@@ -4,6 +4,7 @@ namespace gestorBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use gestorBundle\Entity\empresas;
+use gestorBundle\Entity\profe;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class APIController extends Controller
@@ -31,5 +32,25 @@ class APIController extends Controller
         'fechaCreacion' => $empresa->getFechaCreacion(),
       );
     }
+
+    public function profeAction(){
+      $repository = $this->getDoctrine()->getRepository('gestorBundle:profe');
+      $profe = $repository->findAll();
+      $data = array('profes' => array());
+      foreach ($profe as $profe) {
+        $data['profe'][] = $this->serializeProfe($profe);
+        }
+        $response = new JsonResponse($data, 400);
+        return $response;
+      }
+
+      private function serializeProfe(profe $profe)
+      {
+        return array(
+          'nombre' => $profe->getNombre(),
+          'apellido' => $profe->getApellido(),
+          'departamento' => $profe->getDepartamento(),
+        );
+      }
 }
 ?>

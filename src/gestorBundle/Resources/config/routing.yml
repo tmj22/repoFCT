@@ -26,3 +26,8 @@ api:
     path:     /API
     defaults: { _controller: gestorBundle:API:empresas }
     methods: [GET]
+
+apiprofe:
+    path:     /APIprofe
+    defaults: { _controller: gestorBundle:API:profe }
+    methods: [GET]
