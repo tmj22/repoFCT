@@ -1,15 +1,29 @@
-{{ form_start(form) }}
+{% extends '::base.html.twig' %}
+{% block body %}
+{% block stylesheets %}
+        <link href="{{ asset('css/styles.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('css/bootstrap-table.css') }}" type="text/css" rel="stylesheet" />
+    {% endblock %}
 
-  {{ form_row(form.username) }}
+<h1>REGISTRO DE USUARIO</h1>
+<table class="table">
+  <tr>
+  {{ form_start(form) }}
 
-  {{ form_row(form.email) }}
+    {{ form_row(form.username) }}
 
-  {{ form_row(form.plainPassword.first) }}
+    {{ form_row(form.email) }}
 
-  {{ form_row(form.plainPassword.second) }}
+    {{ form_row(form.plainPassword.first) }}
 
-  {{ form_row(form.guardar) }}
+    {{ form_row(form.plainPassword.second) }}
 
-  {{ form_row(form.borrar) }}
+    {{ form_row(form.guardar) }}
 
-{{ form_end(form) }}
+    {{ form_row(form.borrar) }}
+
+  {{ form_end(form) }}
+
+</table>
+
+{% endblock %}

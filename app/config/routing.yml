@@ -1,7 +1,7 @@
 usuarios:
     resource: "@usuariosBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /usuarios
 
 gestor:
     resource: "@gestorBundle/Resources/config/routing.yml"
@@ -10,3 +10,6 @@ gestor:
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+logout:
+  path: usuarios/logout

@@ -4,6 +4,7 @@ namespace usuariosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -26,6 +27,13 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=255, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 4,
+     *      max = 16,
+     *      minMessage = "Tu nombre de usuario debe tener {{ limit }} carácteres como mínimo",
+     *      maxMessage = "Tu nombre de usuario debe tener {{ limit }} carácteres como máximo"
+     * )
      */
     private $username;
 
@@ -33,15 +41,46 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Email(
+     *     message = "El email '{{ value }}' no es válido.",
+     * )
      */
     private $email;
 
     /**
      * @var string
      *
+     * @ORM\Column(name="roles", type="json array")
+     */
+
+    private $roles = array();
+
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="password", type="string", length=64)
      */
+
     private $password;
+
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     * @Assert\Regex(
+     *     pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/",
+     *     message="La contraseña debe tener mayúsculas y números"
+     * )
+     * @Assert\Length(
+     *      min = 6,
+     *      minMessage = "La contraseña debe tener {{ limit }} carácteres"
+     * )
+     * @Assert\Length(max=4096)
+     */
+    private $plainPassword;
+
+
 
 
     /**
@@ -54,7 +93,7 @@ class User implements UserInterface
         return $this->id;
     }
 
-    private $plainPassword;
+
 
     public function getPlainPassword()
     {
@@ -131,6 +170,20 @@ class User implements UserInterface
     }
 
     /**
+     * Set roles
+     *
+     * @param string $roles
+     *
+     * @return User
+     */
+    public function setRoles(array $roles)
+    {
+        $this->roles = $roles;
+        // allows for chaining
+        return $this;
+    }
+
+    /**
      * Get password
      *
      * @return string
@@ -151,7 +204,7 @@ class User implements UserInterface
 
 
     public function getRoles() {
-      return array('ROLE_USER');
+      return $this->roles;
     }
 
     public function eraseCredentials() {}

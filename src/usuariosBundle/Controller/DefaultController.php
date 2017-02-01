@@ -22,20 +22,17 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
+
+   /**
+    * @Route("/", name="usuarios")
+    */
+   public function usuariosAction()
+   {
+       return $this->render('gestorBundle:Default:index.html.twig');
+   }
     /**
 
-     * @Route("/")
-
-     */
-
-    public function indexAction()
-    {
-        return $this->render('usuariosBundle:Default:index.html.twig');
-    }
-
-    /**
-
-     * @Route("/usuarios/login", name="login")
+     * @Route("/login", name="login")
 
      */
 
@@ -106,7 +103,7 @@ class DefaultController extends Controller
 
 
 
-            return new Response('Usuario registrado');
+            return $this->redirectToRoute('usuarios');
 
         }
 
