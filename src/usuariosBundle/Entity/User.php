@@ -51,7 +51,7 @@ class User implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="roles", type="json array")
+     * @ORM\Column(name="roles", type="json_array")
      */
 
     private $roles = array();
@@ -176,10 +176,10 @@ class User implements UserInterface
      *
      * @return User
      */
-    public function setRoles(array $roles)
+    public function setRoles($roles)
     {
         $this->roles = $roles;
-        // allows for chaining
+
         return $this;
     }
 

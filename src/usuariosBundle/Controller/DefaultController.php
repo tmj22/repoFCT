@@ -18,6 +18,8 @@ use Symfony\Component\HttpFoundation\Request;
 
 use Symfony\Component\HttpFoundation\Response;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+
 
 
 class DefaultController extends Controller
@@ -30,6 +32,7 @@ class DefaultController extends Controller
    {
        return $this->render('gestorBundle:Default:index.html.twig');
    }
+
     /**
 
      * @Route("/login", name="login")
@@ -52,6 +55,18 @@ class DefaultController extends Controller
       ));
 
     }
+
+    /**
+
+    * @Route("/admin", name="admin")
+    * @Security("has_role('ROLE_ADMIN')")
+
+    */
+    public function adminAction()
+    {
+       return $this->render('usuariosBundle:Default:admin.html.twig');
+    }
+
     /**
 
      * @Route("/register", name="user_registration")
@@ -84,6 +99,9 @@ class DefaultController extends Controller
                 ->encodePassword($user, $user->getPlainPassword());
 
             $user->setPassword($password);
+
+            $roles=["ROLE_USER"];
+            $user->setRoles($roles);
 
 
 
@@ -118,5 +136,7 @@ class DefaultController extends Controller
         );
 
     }
+
+
 
 }
