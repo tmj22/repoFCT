@@ -78,6 +78,9 @@ security:
             - { path: ^/API, roles: IS_AUTHENTICATED_ANONYMOUSLY }
             - { path: ^/usuarios/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
             - { path: ^/usuarios/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+            - { path: ^/usuarios/conf, roles: IS_AUTHENTICATED_ANONYMOUSLY }
             - { path: ^/, roles: ROLE_USER }
             - { path: ^/admin, roles: ROLE_ADMIN }
             - { path: ^/usuarios/admin, roles: ROLE_ADMIN }
+            - { path: ^/usuarios/conf, roles: ROLE_SUPER_ADMIN }
+            - { path: ^/usuarios/newconf, roles: ROLE_SUPER_ADMIN }

@@ -1,6 +1,6 @@
 <?php
 
-namespace gestorBundle\Form;
+namespace usuariosBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -9,7 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
 
-class empresasType extends AbstractType
+class ConfType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -18,13 +18,11 @@ class empresasType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nombre')
-            ->add('direccion')
-            ->add('cp')
-            ->add('telefono1')
-            ->add('telefono2')
-            ->add('fechaCreacion')
+            ->add('param')
+            ->add('configuracion')
+
             ->add('guardar',SubmitType::class)
+            ->add('borrar', ResetType::class)
         ;
     }
 
@@ -34,7 +32,7 @@ class empresasType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'gestorBundle\Entity\empresas'
+            'data_class' => 'usuariosBundle\Entity\Conf'
         ));
     }
 }

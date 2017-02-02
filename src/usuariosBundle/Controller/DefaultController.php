@@ -14,6 +14,10 @@ use usuariosBundle\Entity\User;
 
 use usuariosBundle\Form\UserType;
 
+use usuariosBundle\Entity\Conf;
+
+use usuariosBundle\Form\ConfType;
+
 use Symfony\Component\HttpFoundation\Request;
 
 use Symfony\Component\HttpFoundation\Response;
@@ -136,6 +140,61 @@ class DefaultController extends Controller
         );
 
     }
+
+    /**
+     * @Route("/conf", name="conf")
+     * @Security("has_role('ROLE_SUPER_ADMIN')")
+     */
+     public function confAction()
+     {
+         $repository = $this->getDoctrine()->getRepository('usuariosBundle:Conf');
+         $conf = $repository->findAll();
+         return $this->render('usuariosBundle:Default:conf.html.twig',array('Conf' => $conf));
+     }
+
+
+     /**
+
+      * @Route("/newconf", name="newconf")
+      * @Security("has_role('ROLE_SUPER_ADMIN')")
+
+      */
+      public function newconfAction(Request $request)
+      {
+          $conf = new Conf();
+          $form = $this->createForm(ConfType::class,$conf);
+          $form->handleRequest($request);
+
+          if ($form->isSubmitted() && $form->isValid()) {
+
+         // $form->getData() holds the submitted values
+
+         // but, the original `$task` variable has also been updated
+
+         $empresa = $form->getData();
+
+
+
+         // ... perform some action, such as saving the task to the database
+
+         // for example, if Task is a Doctrine entity, save it!
+
+         $em = $this->getDoctrine()->getManager();
+
+         $em->persist($conf);
+
+         $em->flush();
+
+
+
+         return $this->redirectToRoute('conf', array('status'=>'OK'));
+
+         }
+
+          return $this->render('usuariosBundle:Default:newConf.html.twig',array('form' => $form->createView()));
+      }
+
+
 
 
 
